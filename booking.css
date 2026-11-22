@@ -95,6 +95,93 @@
   margin-bottom: 12px;
 }
 
+/* Pay Now button (secondary style, above Submit Booking) */
+.form-box .btn-pay {
+  background: #fff;
+  color: #c45b73;
+  border: 1.5px solid #c45b73;
+  margin-bottom: 12px;
+}
+
+.form-box .btn-pay:hover {
+  background: #fbf1ec;
+}
+
+.form-box .btn-pay:disabled {
+  background: #edf6ee;
+  color: #2e6b3e;
+  border-color: #2e6b3e;
+  cursor: default;
+}
+
+.pay-status {
+  color: #2e6b3e;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+/* Demo QR payment popup */
+.qr-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(43, 29, 26, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 100;
+}
+
+.qr-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+}
+
+.qr-card h2 {
+  font-size: 24px;
+  color: #2b1d1a;
+  margin-bottom: 8px;
+}
+
+.qr-amount {
+  color: #5f514d;
+  margin-bottom: 16px;
+}
+
+.qr-image {
+  width: 220px;
+  height: 220px;
+  margin-bottom: 16px;
+}
+
+.qr-note {
+  font-size: 14px;
+  color: #5f514d;
+  margin-bottom: 20px;
+}
+
+.qr-card .btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  margin-bottom: 10px;
+}
+
+.qr-card .btn-close {
+  background: #fff;
+  color: #c45b73;
+  border: 1.5px solid #c45b73;
+  margin-bottom: 0;
+}
+
 /* Booking details box */
 .details-box {
   margin-top: 24px;

@@ -64,6 +64,10 @@
         <p id="formError" class="form-error"></p>
         <p id="formSuccess" class="form-success"></p>
 
+        <!-- Demo payment: shows a fake QR code in a popup. No real money is taken. -->
+        <button type="button" id="payNowBtn" class="btn btn-pay">Pay Now</button>
+        <p id="payStatus" class="pay-status"></p>
+
         <button type="submit" class="btn">Submit Booking</button>
       </form>
 
@@ -79,6 +83,18 @@
       <h2>My Bookings</h2>
       <p id="bookingCount">No bookings saved yet.</p>
       <ul id="bookingList"></ul>
+    </div>
+  </div>
+
+  <!-- Demo payment popup: fake QR code. No real money is taken. -->
+  <div id="qrModal" class="qr-modal" style="display:none">
+    <div class="qr-card">
+      <h2>Scan to Pay</h2>
+      <p id="qrAmount" class="qr-amount"></p>
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAAHsCAIAAACfSAk3AAAKx0lEQVR4nO3c0W0ryRVFUctQFgYcgfOPxBEYmDjaEfi5MK/m6u7mWt8CWWRTG/V1vp7n+RsATX//6QMA8OeJOECYiAOEiThAmIgDhIk4QJiIA4SJOECYiAOEiThAmIgDhIk4QJiIA4SJOECYiAOEiThAmIgDhIk4QJiIA4SJOECYiAOEiThAmIgDhH3feqF//fMft14q59//+eP//s3J93PyOrfcel4++/ts+2281a3fj5s4QJiIA4SJOECYiAOEiThAmIgDhIk4QJiIA4SJOECYiAOEiThA2LXtlBPFrYlP3tmY3L64ta+y7XkVt0G2bZ4U/3cmvx83cYAwEQcIE3GAMBEHCBNxgDARBwgTcYAwEQcIE3GAMBEHCBNxgLDR7ZQTn7zJcGs/pOjWXsfk9zN5nsltmeLeyyd3w00cIEzEAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCBMxAHCRBwgbN12yltNbl9MbjtM7nVs+36K3/O29+L3uYkDhIk4QJiIA4SJOECYiAOEiThAmIgDhIk4QJiIA4SJOECYiAOE2U5ZZNsuyuQ+xrZdlMktlxNvfe78PjdxgDARBwgTcYAwEQcIE3GAMBEHCBNxgDARBwgTcYAwEQcIE3GAsHXbKZMbEdtMbnGcmNwhmTS5wVLccin+DxbPfIubOECYiAOEiThAmIgDhIk4QJiIA4SJOECYiAOEiThAmIgDhIk4QNjodsq2DY23mtxg2bbp8dbX2Wbyc+nGr7mJA4SJOECYiAOEiThAmIgDhIk4QJiIA4SJOECYiAOEiThAmIgDhH09z/PTZ/gI2/Yf7H7MmNwPmdzMKT73t3ITBwgTcYAwEQcIE3GAMBEHCBNxgDARBwgTcYAwEQcIE3GAMBEHCLu2nbJtZ2Pb1sQtn3zm4u/n1nud2PY9b/sdnti2dXPCTRwgTMQBwkQcIEzEAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCDs2nbKieJug/P8vm2bJye2bWgUt4CKz/3E5Oc64SYOECbiAGEiDhAm4gBhIg4QJuIAYSIOECbiAGEiDhAm4gBhIg4Q9j35ZpMbESe2neeW4l7HtteZ9NbPNWnb/+AkN3GAMBEHCBNxgDARBwgTcYAwEQcIE3GAMBEHCBNxgDARBwgTcYCwr+d5rrzQ5MbItj2TbdsXn7xD8slnnvz/OrFtz6T43E+4iQOEiThAmIgDhIk4QJiIA4SJOECYiAOEiThAmIgDhIk4QJiIA4R933qhbZsVk9sg2zYibtm2obFtW2bbe92y7XmdODlz8VmccBMHCBNxgDARBwgTcYAwEQcIE3GAMBEHCBNxgDARBwgTcYAwEQcIu7adcmLbZsXk69yy7Twnbu3PbPv9bNsGKe5+bNtpKf5/uYkDhIk4QJiIA4SJOECYiAOEiThAmIgDhIk4QJiIA4SJOECYiAOEXdtOubWPsc22z1XciDg587bPte25nyjukEzu6pwoPnc3cYAwEQcIE3GAMBEHCBNxgDARBwgTcYAwEQcIE3GAMBEHCBNxgLCv53l++gw/5tZOQnFr4sStz3Xird/zttc5sW0/ZNtnv+XWmd3EAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCBMxAHCRBwgTMQBwpLbKW/dUjhR/Fxv3dk48dbv+cS2z77tPLe4iQOEiThAmIgDhIk4QJiIA4SJOECYiAOEiThAmIgDhIk4QJiIA4Rd2055657J5CbDJ+8/FH8/285z4tZvbNtv48Tk87KdAsAREQcIE3GAMBEHCBNxgDARBwgTcYAwEQcIE3GAMBEHCBNxgLB12ynFHZLiexXPfOu9TkzumZwo7ups2xjZ9hu7xU0cIEzEAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCBMxAHCRBwg7Np2StG2jZFbtp15255J8Txv/a1OKu69nHATBwgTcYAwEQcIE3GAMBEHCBNxgDARBwgTcYAwEQcIE3GAMBEHCPv+6QP8VSa3Jra9zrZdFOf5teKeyeT+zLatm20bPm7iAGEiDhAm4gBhIg4QJuIAYSIOECbiAGEiDhAm4gBhIg4QJuIAYde2Uyb3BCb3Frbtomzb4ijufpy49fu5pfjcT85c3GA5Mfks3MQBwkQcIEzEAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCBMxAHCvp7n+ekz/JjJvZcTk/sPxc2Tt+7P3DL5ubb95rd9rklu4gBhIg4QJuIAYSIOECbiAGEiDhAm4gBhIg4QJuIAYSIOECbiAGHXtlO2bU1MbiBs222YfBbFrYkTk890cjPnRHHDZ9sezuTzchMHCBNxgDARBwgTcYAwEQcIE3GAMBEHCBNxgDARBwgTcYAwEQcIu7adcsJOwu/btlEzqbjXcUtxX2XS5G9j2x6OmzhAmIgDhIk4QJiIA4SJOECYiAOEiThAmIgDhIk4QJiIA4SJOEDY960X2raLsm3f4ETxPCe2bZ6cKO7zvHXP5MSt/53JM9/iJg4QJuIAYSIOECbiAGEiDhAm4gBhIg4QJuIAYSIOECbiAGEiDhB2bTtlch+juMmwbddi0uQz3fYsbp1n8jvctk207XVOTDbKTRwgTMQBwkQcIEzEAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCDs63menz5Dnn0V/pfJ5/7W7ZRJ23Z1TriJA4SJOECYiAOEiThAmIgDhIk4QJiIA4SJOECYiAOEiThAmIgDhF3bTtm2ObBt/6G4I7HN5HdY3DM5se08k976/+4mDhAm4gBhIg4QJuIAYSIOECbiAGEiDhAm4gBhIg4QJuIAYSIOEHZtO4Vf27Z9cWLbPsatzYrJ9yq+zoltW0DbzjPJTRwgTMQBwkQcIEzEAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCDs+9YLbdvZmFTciPjkjZFbtm1xbDvPiW17L7dMPgs3cYAwEQcIE3GAMBEHCBNxgDARBwgTcYAwEQcIE3GAMBEHCBNxgLBr2ykn3rrtcGJyz+StexQntu20bHumn7w/U3xeJ9zEAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCBMxAHCRBwgTMQBwka3U05MbnFM7jZs2+I4UdzZODnzts81adtvfpvi/oybOECYiAOEiThAmIgDhIk4QJiIA4SJOECYiAOEiThAmIgDhIk4QNi67ZS3mtxkKO6H3NrZ2Pb9bHvubzX5PW/bV3ETBwgTcYAwEQcIE3GAMBEHCBNxgDARBwgTcYAwEQcIE3GAMBEHCLOdssjkVsnke03atj9zS3Hr5tZ5tu3q3NpXucVNHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCBMxAHCRBwgTMQBwkQcIGzddspbNz1umdwG2bblMrlVMnmebb/54i7KpG3/O27iAGEiDhAm4gBhIg4QJuIAYSIOECbiAGEiDhAm4gBhIg4QJuIAYaPbKcWdhFu2ffZt2xe3zrNt8+TkvbZ9h5Mmv8PJ72fyPG7iAGEiDhAm4gBhIg4QJuIAYSIOECbiAGEiDhAm4gBhIg4QJuIAYV/P8/z0GQD4k9zEAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCBMxAHCRBwgTMQBwkQcIEzEAcJEHCBMxAHCRBwgTMQBwv4LbA3zYSiLZtQAAAAASUVORK5CYII=" alt="Demo QR code for payment" class="qr-image">
+      <p class="qr-note">Demo only &mdash; this is a fake QR code. No real money is taken.</p>
+      <button type="button" id="paidBtn" class="btn">I&rsquo;ve Paid (Demo)</button>
+      <button type="button" id="closeQrBtn" class="btn btn-close">Close</button>
     </div>
   </div>
 

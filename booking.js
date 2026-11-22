@@ -8,6 +8,50 @@ function loadBookings() {
   return loadData("weddingsBookings", []);
 }
 
+// ----- Demo payment (fake QR code, no real money) -----
+// paymentPaid is true after the visitor clicks "I've Paid (Demo)".
+var paymentPaid = false;
+
+function resetPayment() {
+  paymentPaid = false;
+  var payBtn = document.getElementById("payNowBtn");
+  payBtn.textContent = "Pay Now";
+  payBtn.disabled = false;
+  document.getElementById("payStatus").textContent = "";
+}
+
+// Open the QR popup. Show the chosen service and its price, if one is picked.
+document.getElementById("payNowBtn").addEventListener("click", function () {
+  var select = document.getElementById("service");
+  var amount = document.getElementById("qrAmount");
+  if (select.value) {
+    amount.textContent = "Paying for: " + select.options[select.selectedIndex].textContent;
+  } else {
+    amount.textContent = "Pick a service above to see its price here.";
+  }
+  document.getElementById("qrModal").style.display = "flex";
+});
+
+// Close the popup (Close button, or click the dark area around the card).
+document.getElementById("closeQrBtn").addEventListener("click", function () {
+  document.getElementById("qrModal").style.display = "none";
+});
+document.getElementById("qrModal").addEventListener("click", function (event) {
+  if (event.target.id === "qrModal") {
+    document.getElementById("qrModal").style.display = "none";
+  }
+});
+
+// "I've Paid" marks the demo payment as done and closes the popup.
+document.getElementById("paidBtn").addEventListener("click", function () {
+  paymentPaid = true;
+  document.getElementById("qrModal").style.display = "none";
+  var payBtn = document.getElementById("payNowBtn");
+  payBtn.textContent = "Paid (Demo)";
+  payBtn.disabled = true;
+  document.getElementById("payStatus").textContent = "Demo payment done. You can submit your booking now.";
+});
+
 // Fill the service dropdown from the JSON file.
 // If the page was opened with ?service=full-planning, select that service.
 function loadServices() {
@@ -66,7 +110,11 @@ function showBookings() {
   for (var i = 0; i < bookings.length; i++) {
     var b = bookings[i];
     var item = document.createElement("li");
-    item.textContent = b.name + " - " + b.serviceName + " on " + b.date + " (" + b.guests + " guests)";
+    var text = b.name + " - " + b.serviceName + " on " + b.date + " (" + b.guests + " guests)";
+    if (b.payment && b.payment.status === "paid") {
+      text += " - Paid (demo)";
+    }
+    item.textContent = text;
     list.appendChild(item);
   }
 }
@@ -126,7 +174,9 @@ document.getElementById("bookingForm").addEventListener("submit", function (even
     service: select.value,
     serviceName: select.options[select.selectedIndex].textContent,
     guests: document.getElementById("guests").value,
-    message: document.getElementById("message").value.trim()
+    message: document.getElementById("message").value.trim(),
+    // Demo payment only: "paid" if Pay Now was used, otherwise "not paid".
+    payment: { method: "QR (demo)", status: paymentPaid ? "paid" : "not paid" }
   };
 
   // Add the saved package from the service builder, if there is one.
@@ -146,6 +196,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (even
     " (" + booking.guests + " guests). We will contact you at " + booking.email + ".";
   document.getElementById("bookingDetails").style.display = "block";
   document.getElementById("bookingForm").reset();
+  resetPayment();
   showBookings();
 });
 
