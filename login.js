@@ -34,24 +34,17 @@ document.getElementById("forgotLink").addEventListener("click", function (e) {
 // in localStorage as "weddingUsers" (a JSON list of name + email).
 // Passwords are never stored, so the password is only checked for length.
 function findUser(email) {
-  var users = [];
-  try {
-    users = JSON.parse(localStorage.getItem("weddingUsers")) || [];
-  } catch (err) {
-    users = [];
-  }
+  var users = loadData("weddingUsers", []);
   for (var i = 0; i < users.length; i++) {
     if (users[i].email === email) {
       return users[i];
     }
   }
   // Accounts created before the list existed were saved as "weddingUser".
-  try {
-    var oldUser = JSON.parse(localStorage.getItem("weddingUser"));
-    if (oldUser && oldUser.email === email) {
-      return oldUser;
-    }
-  } catch (err) {}
+  var oldUser = loadData("weddingUser", null);
+  if (oldUser && oldUser.email === email) {
+    return oldUser;
+  }
   return null;
 }
 
@@ -86,7 +79,7 @@ form.addEventListener("submit", function (e) {
   // Correct account. Save the login session (name and email only,
   // never the password) and go to the homepage.
   // This is a demo login only - there is no real authentication.
-  localStorage.setItem("weddingUser", JSON.stringify(user));
+  saveData("weddingUser", user);
   success.textContent = "Login successful! Taking you to the homepage...";
   success.classList.add("show");
   setTimeout(function () {

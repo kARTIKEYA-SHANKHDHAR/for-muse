@@ -50,12 +50,8 @@ form.addEventListener("submit", function (e) {
 
   // Keep a list of all accounts in localStorage ("weddingUsers") so that
   // login.js can check whether an email has an account.
-  var users = [];
-  try {
-    users = JSON.parse(localStorage.getItem("weddingUsers")) || [];
-  } catch (err) {
-    users = [];
-  }
+  // loadData returns [] when nothing is saved yet or the saved text is broken.
+  var users = loadData("weddingUsers", []);
   for (var i = 0; i < users.length; i++) {
     if (users[i].email === user.email) {
       emailError.textContent = "An account with this email already exists. Please login instead.";
@@ -64,10 +60,10 @@ form.addEventListener("submit", function (e) {
     }
   }
   users.push(user);
-  localStorage.setItem("weddingUsers", JSON.stringify(users));
+  saveData("weddingUsers", users);
 
   // Log the new user in straight away.
-  localStorage.setItem("weddingUser", JSON.stringify(user));
+  saveData("weddingUser", user);
   success.textContent = "Account created! Welcome to Ever After, " + user.name + ".";
   success.classList.add("show");
 });

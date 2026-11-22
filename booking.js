@@ -3,12 +3,9 @@
 // and list all saved bookings.
 
 // Read saved bookings from localStorage (or start with an empty list).
+// loadData returns [] when nothing is saved yet or the saved text is broken.
 function loadBookings() {
-  var saved = localStorage.getItem("weddingsBookings");
-  if (saved) {
-    return JSON.parse(saved);
-  }
-  return [];
+  return loadData("weddingsBookings", []);
 }
 
 // Fill the service dropdown from the JSON file.
@@ -43,11 +40,10 @@ function loadServices() {
 
 // Show the package saved in the service builder, if there is one.
 function showPackage() {
-  var saved = localStorage.getItem("weddingPackage");
-  if (!saved) {
+  var pkg = loadData("weddingPackage", null);
+  if (!pkg) {
     return;
   }
-  var pkg = JSON.parse(saved);
   var text = "Planning: " + (pkg.planning || "not selected")
     + " | Style: " + (pkg.style || "not selected")
     + " | Services: " + (pkg.services.join(", ") || "none")
@@ -134,14 +130,14 @@ document.getElementById("bookingForm").addEventListener("submit", function (even
   };
 
   // Add the saved package from the service builder, if there is one.
-  var savedPackage = localStorage.getItem("weddingPackage");
+  var savedPackage = loadData("weddingPackage", null);
   if (savedPackage) {
-    booking.package = JSON.parse(savedPackage);
+    booking.package = savedPackage;
   }
 
   var bookings = loadBookings();
   bookings.push(booking);
-  localStorage.setItem("weddingsBookings", JSON.stringify(bookings));
+  saveData("weddingsBookings", bookings);
 
   document.getElementById("formSuccess").textContent =
     "Thank you, " + booking.name + "! Your booking has been saved.";

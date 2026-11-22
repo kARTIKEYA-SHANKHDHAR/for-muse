@@ -20,7 +20,7 @@
       <a href="portfolio.html">Portfolio</a>
       <a href="contact.html">Contact</a>
       <a href="login.html" id="loginLink">Login</a>
-      <span id="userArea" class="user-area" style="display:none"><span id="userName"></span> &middot; <a href="#" id="logoutLink">Logout</a></span>
+      <span id="userArea" class="user-area" style="display:none"><a href="#" id="logoutLink">Logout</a></span>
 </div>
       <a class="nav-cta" href="booking.html">
         Plan Your Wedding
@@ -261,6 +261,7 @@
     <img class="cta-photo" src="assets/builder-cta.png" alt="">
   </div>
 
+  <script src="storage.js"></script>
   <script>
     function refreshSummary(group) {
       var li = document.querySelector('li[data-summary-for="' + group + '"] .li-value');
@@ -305,10 +306,37 @@
 
     function savePackage() {
       var pkg = getPackage();
-      localStorage.setItem('weddingPackage', JSON.stringify(pkg));
+      saveData('weddingPackage', pkg);
       document.getElementById('packageMessage').textContent = 'Package saved! You can continue to booking.';
       document.getElementById('packageLink').style.display = 'inline-block';
     }
+
+    // Restore the saved selections after a page refresh, so the
+    // chosen cards stay selected instead of going back to the defaults.
+    function restorePackage() {
+      var pkg = loadData('weddingPackage', null);
+      if (!pkg) {
+        return;
+      }
+      // Single-choice groups (planning, style, experience): select the saved card.
+      ['planning', 'style', 'experience'].forEach(function (group) {
+        if (!pkg[group]) {
+          return;
+        }
+        document.querySelectorAll('.option-card[data-group="' + group + '"]').forEach(function (c) {
+          c.classList.toggle('selected', c.dataset.value === pkg[group]);
+        });
+      });
+      // Services group: select each saved service, clear the rest.
+      if (pkg.services) {
+        document.querySelectorAll('.option-card[data-group="services"]').forEach(function (c) {
+          c.classList.toggle('selected', pkg.services.indexOf(c.dataset.value) !== -1);
+        });
+      }
+      ['planning', 'style', 'services', 'experience'].forEach(refreshSummary);
+    }
+
+    restorePackage();
 
     document.getElementById('requestBtn').addEventListener('click', savePackage);
     document.getElementById('ctaRequestBtn').addEventListener('click', savePackage);

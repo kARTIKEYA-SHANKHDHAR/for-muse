@@ -1,22 +1,18 @@
 // Shared navbar login state.
 // The logged-in user is saved in localStorage as "weddingUser"
 // (name and email only, never the password).
+// The navbar never shows the user's name - logged in it shows
+// only Logout, logged out it shows only Login.
 
-// Read the saved user, or null if nobody is logged in.
-function getSavedUser() {
-  try {
-    return JSON.parse(localStorage.getItem("weddingUser"));
-  } catch (e) {
-    return null;
-  }
+// Is anyone logged in right now?
+function isLoggedIn() {
+  return loadData("weddingUser", null) !== null;
 }
 
-// Show "Hi, <name>" + Logout when logged in, and Login when logged out.
+// Show Logout when logged in, and Login when logged out.
 function updateNavbar() {
-  var user = getSavedUser();
   var loginLink = document.getElementById("loginLink");
   var userArea = document.getElementById("userArea");
-  var userName = document.getElementById("userName");
   var logoutLink = document.getElementById("logoutLink");
 
   // This page has no navbar (login / signup pages), so there is nothing to do.
@@ -24,10 +20,9 @@ function updateNavbar() {
     return;
   }
 
-  if (user) {
+  if (isLoggedIn()) {
     loginLink.style.display = "none";
     userArea.style.display = "";
-    userName.textContent = "Hi, " + (user.name || user.email);
   } else {
     loginLink.style.display = "";
     userArea.style.display = "none";
@@ -38,7 +33,7 @@ function updateNavbar() {
       event.preventDefault();
       // Logout clears the session only. The saved accounts stay,
       // so the user can log in again with the same email.
-      localStorage.removeItem("weddingUser");
+      clearData("weddingUser");
       window.location.reload();
     });
   }

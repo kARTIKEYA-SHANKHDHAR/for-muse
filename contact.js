@@ -2,12 +2,9 @@
 // and show the saved messages on the page.
 
 // Read saved messages from localStorage (or start with an empty list).
+// loadData returns [] when nothing is saved yet or the saved text is broken.
 function loadMessages() {
-  var saved = localStorage.getItem("contactMessages");
-  if (saved) {
-    return JSON.parse(saved);
-  }
-  return [];
+  return loadData("contactMessages", []);
 }
 
 // Show the saved messages under the form.
@@ -74,7 +71,7 @@ document.getElementById("contactForm").addEventListener("submit", function (even
 
   var messages = loadMessages();
   messages.push(newMessage);
-  localStorage.setItem("contactMessages", JSON.stringify(messages));
+  saveData("contactMessages", messages);
 
   document.getElementById("contactForm").reset();
   showFormMessage("Thank you, " + newMessage.name + "! Your message has been saved.", false);

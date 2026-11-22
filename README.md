@@ -85,7 +85,14 @@ an `id`, `name`, `category`, `price`, `priceText` (for example
 ## How localStorage Is Used
 
 localStorage saves data in the browser, so it stays there after you
-refresh the page. There is no server and no database. The keys used are:
+refresh the page. There is no server and no database. All reading and
+writing goes through the three small helpers in `storage.js` —
+`loadData(key, fallback)`, `saveData(key, data)` and `clearData(key)`.
+`loadData` returns the fallback (for example `[]` or `null`) when nothing
+is saved yet or the saved text is not valid JSON, so a broken value
+never crashes a page. Nothing is overwritten except the one key being
+saved — new bookings, messages and accounts are always added to the
+list that is already stored. The keys used are:
 
 | Key | What is saved | Where |
 | --- | --- | --- |
@@ -96,8 +103,8 @@ refresh the page. There is no server and no database. The keys used are:
 | `weddingUsers` | List of all signed-up accounts (name + email) that login checks | signup.html, login.js |
 
 After a successful login the user is taken to home.html, and the navbar
-shows "Hi, &lt;name&gt;" with a Logout option instead of Login. Logout clears
-`weddingUser` only, so the account stays saved and can log in again.
+shows only Logout instead of Login (it never shows the user's name).
+Logout clears `weddingUser` only, so the account stays saved and can log in again.
 
 To clear the saved data, open the browser developer tools, go to
 Application → Local Storage, and delete the keys — or clear the site data.
