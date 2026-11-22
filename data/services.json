@@ -1,0 +1,56 @@
+[
+  {
+    "id": "full-planning",
+    "name": "Full Wedding Planning",
+    "category": "Planning",
+    "price": 149999,
+    "priceText": "Starting at ₹1,49,999",
+    "description": "Complete end-to-end management from venue selection to design, catering, entertainment and more — so you can enjoy every moment.",
+    "image": "assets/ffd85.png"
+  },
+  {
+    "id": "partial-planning",
+    "name": "Partial Planning",
+    "category": "Planning",
+    "price": 79999,
+    "priceText": "Starting at ₹79,999",
+    "description": "Perfect for couples who have started planning but need expert guidance to bring everything together seamlessly.",
+    "image": "assets/5059a.png"
+  },
+  {
+    "id": "day-of",
+    "name": "Day-of Coordination",
+    "category": "Planning",
+    "price": 49999,
+    "priceText": "Starting at ₹49,999",
+    "description": "Relax and enjoy your wedding day. Our team handles all coordination, vendor management and ensures a flawless, stress-free celebration.",
+    "image": "assets/e211d.png"
+  },
+  {
+    "id": "destination",
+    "name": "Destination Wedding",
+    "category": "Planning",
+    "price": 299999,
+    "priceText": "Starting at ₹2,99,999",
+    "description": "End-to-end planning for celebrations away from home — venue, travel, stays and every ceremony, handled by our team.",
+    "image": "assets/32705.png"
+  },
+  {
+    "id": "decor",
+    "name": "Décor & Styling",
+    "category": "Décor & Photo",
+    "price": 99999,
+    "priceText": "Starting at ₹99,999",
+    "description": "Bespoke décor that brings your vision to life — mandap, stage, flowers, lighting and table styling for every ceremony.",
+    "image": "assets/11c8b.png"
+  },
+  {
+    "id": "photo",
+    "name": "Photography & Videography",
+    "category": "Décor & Photo",
+    "price": 59999,
+    "priceText": "Starting at ₹59,999",
+    "description": "Capture every precious moment — candid photos, cinematic films and albums of your wedding day.",
+    "image": "assets/f022b.png"
+  }
+]

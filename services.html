@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Elan Weddings</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="services.css">
+</head>
+<body>
+
+  <!-- Nav (same links as the home page) -->
+  <div class="nav page-nav">
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a class="active" href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </div>
+    <a class="nav-cta" href="booking.html">Plan Your Wedding</a>
+  </div>
+
+  <div class="services-page">
+    <p class="kicker">Our Services</p>
+    <h1 class="title">Bespoke Planning For Your Special Day</h1>
+    <p class="lead">We offer comprehensive, high-end wedding services tailored to your vision. Prices below are starting prices — the final price depends on your venue, guest count and ceremonies.</p>
+
+    <!-- Category filter buttons -->
+    <div class="filters">
+      <button type="button" class="filter-btn active" data-filter="All">All</button>
+      <button type="button" class="filter-btn" data-filter="Planning">Planning</button>
+      <button type="button" class="filter-btn" data-filter="Décor &amp; Photo">Décor &amp; Photo</button>
+    </div>
+
+    <!-- Service cards are added here by services.js -->
+    <div id="serviceList" class="service-list"></div>
+    <p id="serviceMessage">Loading services...</p>
+
+    <p class="builder-note">Want a package made just for you? <a href="custom-service-builder.html">Build your own package</a> and save it, then book it.</p>
+  </div>
+
+  <footer class="page-footer">
+    <p>&copy; 2026 Elan Weddings. All rights reserved. &middot; <a href="home.html">Home</a> &middot; <a href="about.html">About</a> &middot; <a href="contact.html">Contact</a></p>
+  </footer>
+
+  <script src="services.js"></script>
+</body>
+</html>

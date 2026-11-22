@@ -1,0 +1,72 @@
+/* Login page - ivory, dusty rose and gold */
+
+:root {
+  --bg: #fdf8f2;       /* ivory */
+  --rose: #b76e79;     /* dusty rose */
+  --rose-dark: #9a5560;
+  --gold: #c9a227;     /* gold */
+  --ink: #2b2118;      /* dark text */
+  --ink-soft: #6f5d52;
+  --border: #d9bfb6;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Jost", sans-serif; background: var(--bg); color: var(--ink); }
+h1, h2 { font-family: "Playfair Display", Georgia, serif; margin: 0; }
+
+/* Two halves: photo on the left, form on the right */
+.layout { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+
+/* Left photo panel */
+.brand { position: relative; display: flex; align-items: flex-end; overflow: hidden; }
+.brand img.bg { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+.brand-content { position: relative; padding: 40px; color: #fff8f1; }
+.brand-mark { letter-spacing: 3px; text-transform: uppercase; font-size: 13px; color: #f6dfae; margin-bottom: 16px; }
+.brand h1 { font-size: 48px; line-height: 1.15; }
+.brand h1 em { font-style: italic; color: #f3cdd2; }
+.gold-rule { width: 64px; height: 2px; background: var(--gold); border: 0; margin: 20px 0; }
+.brand p { margin: 0; }
+
+/* Right form panel */
+.form-side { display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+.card { width: 100%; max-width: 430px; background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 36px; }
+.eyebrow { color: var(--rose); letter-spacing: 3px; text-transform: uppercase; font-size: 12px; margin: 0 0 8px; }
+.card h2 { font-size: 32px; margin-bottom: 8px; }
+.intro { color: var(--ink-soft); margin: 0 0 24px; }
+
+/* Fields */
+.field { margin-bottom: 18px; }
+.field label { display: block; margin-bottom: 6px; }
+.input-wrap { position: relative; }
+.input-wrap svg.lead { position: absolute; left: 14px; top: 16px; color: var(--ink-soft); }
+input { width: 100%; height: 50px; padding: 10px 48px 10px 44px; font: inherit; border: 1.5px solid var(--border); border-radius: 10px; }
+input:focus { outline: none; border-color: var(--rose); }
+.toggle-password { position: absolute; right: 6px; top: 3px; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; color: var(--ink-soft); }
+.error-text { display: none; color: #b4232a; font-size: 14px; margin: 6px 0 0; }
+.error-text.show { display: block; }
+.hint { color: var(--ink-soft); font-size: 14px; margin: 6px 0 0; }
+
+/* Forgot password + button */
+.row-between { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+.forgot { color: var(--rose-dark); text-decoration: none; }
+.btn-login { width: 100%; height: 52px; border: 0; border-radius: 10px; background: var(--rose); color: #fff; font: inherit; font-size: 17px; font-weight: 600; cursor: pointer; }
+.btn-login:hover { background: var(--rose-dark); }
+
+/* Messages shown by JS */
+.banner { display: none; padding: 12px; border-radius: 10px; margin-bottom: 18px; }
+.banner.show { display: block; }
+.banner-success { background: #edf6ee; color: #2e6b3e; }
+.banner-error { background: #fdf0f0; color: #b4232a; }
+.banner-info { background: #fbf1ec; color: var(--ink); }
+
+/* Mobile: stack the photo above the form */
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .brand { min-height: 380px; }
+  .brand h1 { font-size: 32px; }
+  .card { margin-top: -30px; position: relative; }
+}
+
+/* Link under the button (signup / back to home) */
+.switch-line { text-align: center; color: var(--ink-soft); margin: 18px 0 0; }
+.switch-line a { color: var(--rose-dark); font-weight: 600; }

@@ -1,0 +1,161 @@
+/* Booking page - same Elan theme as home.css (cream and rose) */
+
+.page-nav {
+  margin-top: 16px;
+}
+
+.page-nav .nav-links {
+  margin-left: 24px;
+}
+
+.booking-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 16px 40px;
+}
+
+.booking-page .kicker,
+.booking-page .title {
+  text-align: center;
+}
+
+.booking-page .lead {
+  max-width: 768px;
+  margin: 15px auto 32px;
+  text-align: center;
+}
+
+/* Saved package box (from the service builder) */
+.package-box {
+  background: #fbf1ec;
+  border: 1px solid #ead9d2;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.package-box h2 {
+  font-size: 20px;
+  color: #2b1d1a;
+  margin-bottom: 8px;
+}
+
+.package-box .small {
+  font-size: 14px;
+  color: #5f514d;
+  margin-top: 8px;
+}
+
+.package-box a {
+  color: #c45b73;
+  font-weight: bold;
+}
+
+/* Form box */
+.form-box {
+  background: #fff;
+  border: 1px solid #ead9d2;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.form-box label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.form-box input,
+.form-box select,
+.form-box textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #d9bfb6;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 15px;
+}
+
+.form-box .btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.form-error {
+  color: #b4232a;
+  margin-bottom: 12px;
+}
+
+.form-success {
+  color: #2e6b3e;
+  margin-bottom: 12px;
+}
+
+/* Booking details box */
+.details-box {
+  margin-top: 24px;
+  background: #edf6ee;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.details-box h2 {
+  font-size: 20px;
+  color: #2b1d1a;
+  margin-bottom: 8px;
+}
+
+/* My bookings list */
+.my-bookings {
+  margin-top: 32px;
+}
+
+.my-bookings h2 {
+  font-size: 24px;
+  color: #2b1d1a;
+  margin-bottom: 8px;
+}
+
+.my-bookings ul {
+  padding-left: 20px;
+  list-style: disc;
+  line-height: 28px;
+}
+
+/* Simple footer */
+.page-footer {
+  text-align: center;
+  padding: 24px 16px;
+  font-size: 14px;
+  color: #5f514d;
+  background: #fff;
+}
+
+.page-footer a {
+  color: #c45b73;
+}
+
+@media (max-width: 900px) {
+  .page-nav {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+  .page-nav .nav-links {
+    margin-left: 0;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .title {
+    font-size: 34px;
+    line-height: 38px;
+  }
+  .form-box {
+    padding: 20px;
+  }
+}

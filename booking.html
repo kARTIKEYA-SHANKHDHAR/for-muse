@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Wedding | Elan Weddings</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+
+  <!-- Nav (same links as the home page) -->
+  <div class="nav page-nav">
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </div>
+    <a class="nav-cta" href="booking.html">Plan Your Wedding</a>
+  </div>
+
+  <div class="booking-page">
+    <p class="kicker">Book With Us</p>
+    <h1 class="title">Book Your Wedding</h1>
+    <p class="lead">Tell us about your wedding and we will get back to you within 24 hours to plan it together.</p>
+
+    <!-- Package saved in the service builder, if there is one -->
+    <div id="packageBox" class="package-box" style="display:none">
+      <h2>Your Saved Package</h2>
+      <p id="packageText"></p>
+      <p class="small">This package was saved from the <a href="custom-service-builder.html">service builder</a>. It will be added to your booking below.</p>
+    </div>
+
+    <div class="form-box">
+      <form id="bookingForm" novalidate>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your name">
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com">
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="+91 00000 00000">
+
+        <label for="date">Event Date</label>
+        <input type="date" id="date">
+
+        <label for="service">Service</label>
+        <select id="service">
+          <option value="">Loading services...</option>
+        </select>
+
+        <label for="guests">Number of Guests</label>
+        <input type="number" id="guests" min="1" placeholder="e.g. 200">
+
+        <label for="message">Tell Us About Your Wedding</label>
+        <textarea id="message" rows="4" placeholder="Venue, ceremonies, style..."></textarea>
+
+        <p id="formError" class="form-error"></p>
+        <p id="formSuccess" class="form-success"></p>
+
+        <button type="submit" class="btn">Submit Booking</button>
+      </form>
+
+      <!-- Details of the booking just saved -->
+      <div id="bookingDetails" class="details-box" style="display:none">
+        <h2>Your Booking</h2>
+        <p id="detailsText"></p>
+      </div>
+    </div>
+
+    <!-- All bookings saved in this browser -->
+    <div class="my-bookings">
+      <h2>My Bookings</h2>
+      <p id="bookingCount">No bookings saved yet.</p>
+      <ul id="bookingList"></ul>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <p>&copy; 2026 Elan Weddings. All rights reserved. &middot; <a href="home.html">Home</a> &middot; <a href="services.html">Services</a> &middot; <a href="contact.html">Contact</a></p>
+  </footer>
+
+  <script src="booking.js"></script>
+</body>
+</html>
