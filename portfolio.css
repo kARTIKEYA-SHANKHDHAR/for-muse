@@ -57,6 +57,14 @@ body {
     transition: 0.3s;
 }
 
+.user-area {
+  font-size: 14px;
+  white-space: nowrap;
+}
+.user-area a {
+  color: var(--primary);
+}
+
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--primary);

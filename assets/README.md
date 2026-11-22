@@ -1,18 +1,13 @@
 # Images Folder (assets/)
 
-This folder is empty because the image files were not included with the project.
+The images for this project live in this folder. They were added back
+on 22 Nov 2026 (the original Figma download links in
+`download-assets.sh` had expired, so the files were added directly).
 
-## Why are the images missing?
-
-The original project downloaded its photos and icons from Figma links
-(see `download-assets.sh`). Those links have expired, so every download
-returns a 404 error. No replacement images were downloaded from the
-internet, because the project must keep using its own images.
-
-The pages still work without the images. Where a photo is missing you
-will see a soft pink or dark background instead, and the text, buttons
-and forms all work normally. The portfolio page uses Unsplash links, so
-its photos still load when you are online.
+If a photo is ever missing, the pages still work — where a photo should
+be you will see a soft pink or dark background instead, and the text,
+buttons and forms all work normally. The portfolio page uses Unsplash
+links, so its photos still load when you are online.
 
 ## How to add the images back
 

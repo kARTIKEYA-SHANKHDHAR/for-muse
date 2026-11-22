@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | EverAfter Wedding Event Planner</title>
+    <title>Portfolio | Ever After</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,19 +16,17 @@
 
     
     <header class="navbar">
-        <div class="logo">
-            EverAfter
-        </div>
+        <a class="logo" href="home.html">Ever After</a>
 
         <nav>
             <ul class="nav-links">
               <li><a href="home.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <a href="services.html">Services</a>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
              <li><a href="portfolio.html" class="active">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Sign Up</a></li>
+            <li><a href="login.html" id="loginLink">Login</a></li>
+            <li id="userArea" class="user-area" style="display:none"><span id="userName"></span> &middot; <a href="#" id="logoutLink">Logout</a></li>
             
 </ul>
         </nav>
@@ -294,7 +292,7 @@
                     <h2>Aarav & Meera</h2>
                     <p class="location">📍 Umaid Bhawan Palace, Jodhpur • 450 Guests</p>
                     <p class="story">
-                        EverAfter brought royal heritage to life over a breathtaking 3-day extravaganza. 
+                        Ever After brought royal heritage to life over a breathtaking 3-day extravaganza. 
                         From hand-crafted brass torchlit entrances to a sanctum wrapped in 10,000 deep crimson roses, 
                         every second was orchestrated to royal perfection.
                     </p>
@@ -600,7 +598,7 @@
     
     <footer>
         <div class="footer-logo">
-            EverAfter
+            Ever After
         </div>
 
         <p>
@@ -610,15 +608,16 @@
         <div class="footer-links">
             <a href="home.html">Home</a>
             <a href="about.html">About</a>
-            <a href="services.html">Services</a>
+            <li><a href="services.html">Services</a></li>
             <a href="portfolio.html">Portfolio</a>
             <a href="contact.html">Contact</a>
         </div>
 
         <p class="copyright">
-            © 2026 EverAfter. All rights reserved.
+            © 2026 Ever After. All rights reserved.
         </p>
     </footer>
 
+  <script src="auth.js"></script>
 </body>
 </html>

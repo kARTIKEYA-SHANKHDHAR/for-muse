@@ -7,6 +7,13 @@ var emailError = document.getElementById("emailError");
 var passError = document.getElementById("passwordError");
 var success = document.getElementById("formSuccess");
 var info = document.getElementById("formInfo");
+var formError = document.getElementById("formError");
+
+// Show a message in one of the banner boxes on the page.
+function showBanner(box, message) {
+  box.textContent = message;
+  box.classList.add("show");
+}
 
 // Show / hide password
 document.getElementById("togglePassword").addEventListener("click", function () {
@@ -22,6 +29,31 @@ document.getElementById("forgotLink").addEventListener("click", function (e) {
   info.textContent = "Please enter your email above, and a reset link will be sent to it.";
   info.classList.add("show");
 });
+
+// Find a registered account by email. Accounts are saved by signup.js
+// in localStorage as "weddingUsers" (a JSON list of name + email).
+// Passwords are never stored, so the password is only checked for length.
+function findUser(email) {
+  var users = [];
+  try {
+    users = JSON.parse(localStorage.getItem("weddingUsers")) || [];
+  } catch (err) {
+    users = [];
+  }
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].email === email) {
+      return users[i];
+    }
+  }
+  // Accounts created before the list existed were saved as "weddingUser".
+  try {
+    var oldUser = JSON.parse(localStorage.getItem("weddingUser"));
+    if (oldUser && oldUser.email === email) {
+      return oldUser;
+    }
+  } catch (err) {}
+  return null;
+}
 
 // On submit: check both fields
 form.addEventListener("submit", function (e) {
@@ -43,10 +75,21 @@ form.addEventListener("submit", function (e) {
   }
   passError.classList.remove("show");
 
-  // Both are fine. This is only a demo login - there is no real account
-  // check on the server. We save just the email, never the password.
-  var user = { email: email.value.trim() };
+  // Both fields are valid, so now check the account exists.
+  var user = findUser(email.value.trim());
+  if (!user) {
+    // Wrong email (or no account yet): show an error and stay on this page.
+    showBanner(formError, "Incorrect email or password. If you don't have an account yet, please sign up first.");
+    return;
+  }
+
+  // Correct account. Save the login session (name and email only,
+  // never the password) and go to the homepage.
+  // This is a demo login only - there is no real authentication.
   localStorage.setItem("weddingUser", JSON.stringify(user));
-  success.textContent = "Login successful! Welcome back. (Demo login only - not real authentication.)";
+  success.textContent = "Login successful! Taking you to the homepage...";
   success.classList.add("show");
+  setTimeout(function () {
+    window.location.href = "home.html";
+  }, 900);
 });

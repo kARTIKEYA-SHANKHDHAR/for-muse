@@ -47,7 +47,27 @@ form.addEventListener("submit", function (e) {
 
   // All three are fine. Save the name and email only - never the password.
   var user = { name: fullname.value.trim(), email: email.value.trim() };
+
+  // Keep a list of all accounts in localStorage ("weddingUsers") so that
+  // login.js can check whether an email has an account.
+  var users = [];
+  try {
+    users = JSON.parse(localStorage.getItem("weddingUsers")) || [];
+  } catch (err) {
+    users = [];
+  }
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].email === user.email) {
+      emailError.textContent = "An account with this email already exists. Please login instead.";
+      emailError.classList.add("show");
+      return;
+    }
+  }
+  users.push(user);
+  localStorage.setItem("weddingUsers", JSON.stringify(users));
+
+  // Log the new user in straight away.
   localStorage.setItem("weddingUser", JSON.stringify(user));
-  success.textContent = "Account created! Welcome to Wedding Event Planner, " + user.name + ".";
+  success.textContent = "Account created! Welcome to Ever After, " + user.name + ".";
   success.classList.add("show");
 });

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Your Wedding | Elan Weddings</title>
+  <title>Book Your Wedding | Ever After</title>
   <link rel="stylesheet" href="home.css">
   <link rel="stylesheet" href="booking.css">
 </head>
@@ -11,14 +11,15 @@
 
   <!-- Nav (same links as the home page) -->
   <div class="nav page-nav">
+    <a class="brand" href="home.html">Ever After</a>
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="services.html">Services</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="contact.html">Contact</a>
-      <a href="login.html">Login</a>
-      <a href="signup.html">Sign Up</a>
+      <a href="login.html" id="loginLink">Login</a>
+      <span id="userArea" class="user-area" style="display:none"><span id="userName"></span> &middot; <a href="#" id="logoutLink">Logout</a></span>
     </div>
     <a class="nav-cta" href="booking.html">Plan Your Wedding</a>
   </div>
@@ -82,9 +83,10 @@
   </div>
 
   <footer class="page-footer">
-    <p>&copy; 2026 Elan Weddings. All rights reserved. &middot; <a href="home.html">Home</a> &middot; <a href="services.html">Services</a> &middot; <a href="contact.html">Contact</a></p>
+    <p>&copy; 2026 Ever After. All rights reserved. &middot; <a href="home.html">Home</a> &middot; <a href="services.html">Services</a> &middot; <a href="contact.html">Contact</a></p>
   </footer>
 
   <script src="booking.js"></script>
+  <script src="auth.js"></script>
 </body>
 </html>

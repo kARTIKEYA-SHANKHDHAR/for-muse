@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Elan Weddings</title>
+  <title>About Us | Ever After</title>
   <link rel="stylesheet" href="home.css">
   <link rel="stylesheet" href="about.css">
 </head>
@@ -11,25 +11,26 @@
 
   <!-- Nav (same links as the home page) -->
   <div class="nav page-nav">
+    <a class="brand" href="home.html">Ever After</a>
     <div class="nav-links">
       <a href="home.html">Home</a>
       <a class="active" href="about.html">About Us</a>
       <a href="services.html">Services</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="contact.html">Contact</a>
-      <a href="login.html">Login</a>
-      <a href="signup.html">Sign Up</a>
+      <a href="login.html" id="loginLink">Login</a>
+      <span id="userArea" class="user-area" style="display:none"><span id="userName"></span> &middot; <a href="#" id="logoutLink">Logout</a></span>
     </div>
     <a class="nav-cta" href="booking.html">Plan Your Wedding</a>
   </div>
 
   <div class="about-page">
-    <p class="kicker">About Elan Weddings</p>
+    <p class="kicker">About Ever After</p>
     <h1 class="title">The Minds Behind Your Perfect Day</h1>
     <p class="lead">We believe every love story deserves a breathtaking celebration. Our dedicated team blends creativity, cultural richness and flawless logistics to create bespoke Indian weddings — be it a close gathering or a grand affair. From mehendi rituals to modern experiences, we handle every detail so you can cherish what truly matters — love, family and forever together.</p>
 
     <h2>Our Story</h2>
-    <p>Elan Weddings began with a simple idea: a wedding should be enjoyed, not managed, by the couple. What started as helping friends plan small ceremonies grew into a full team of planners, designers and coordinators. Today we plan intimate family weddings and grand multi-day celebrations across India — always with the same care we started with.</p>
+    <p>Ever After began with a simple idea: a wedding should be enjoyed, not managed, by the couple. What started as helping friends plan small ceremonies grew into a full team of planners, designers and coordinators. Today we plan intimate family weddings and grand multi-day celebrations across India — always with the same care we started with.</p>
     <p>We plan every ceremony ourselves, work with vendors we trust, and stay with you from the first meeting to the last guest leaving. No detail is too small, and no question is too silly to ask.</p>
 
     <h2>What We Believe In</h2>
@@ -63,8 +64,9 @@
   </div>
 
   <footer class="page-footer">
-    <p>&copy; 2026 Elan Weddings. All rights reserved. &middot; <a href="home.html">Home</a> &middot; <a href="services.html">Services</a> &middot; <a href="contact.html">Contact</a></p>
+    <p>&copy; 2026 Ever After. All rights reserved. &middot; <a href="home.html">Home</a> &middot; <a href="services.html">Services</a> &middot; <a href="contact.html">Contact</a></p>
   </footer>
 
+  <script src="auth.js"></script>
 </body>
 </html>

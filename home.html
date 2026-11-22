@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Elan Weddings</title>
+    <title>Ever After</title>
 
     <link rel="stylesheet" href="home.css">
 </head>
@@ -18,15 +18,15 @@
     <div class="hero-fade"></div>
 
     <div class="nav">
-      <img src="assets/b7664.svg" width="30" height="30" alt="Elan Weddings logo">
+      <a class="brand" href="home.html">Ever After</a>
       <div class="nav-links">
     <a class="active" href="home.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="services.html">Services</a>
     <a href="portfolio.html">Portfolio</a>
-    <a href="login.html">Login</a>
-    <a href="signup.html">Sign Up</a>
     <a href="contact.html">Contact</a>
+    <a href="login.html" id="loginLink">Login</a>
+    <span id="userArea" class="user-area" style="display:none"><span id="userName"></span> &middot; <a href="#" id="logoutLink">Logout</a></span>
           
 </div>
       <a class="nav-cta" href="booking.html">
@@ -62,7 +62,7 @@
         <div class="about-badge">
           <img src="assets/e6e7f.svg" width="14" height="14" alt="">
         </div>
-        <p class="kicker">About Elan Weddings</p>
+        <p class="kicker">About Ever After</p>
         <h2 class="title">The Minds Behind Your<br>Perfect Day</h2>
         <p class="about-text">We believe every love story deserves a breathtaking celebration. Our dedicated team blends creativity, cultural richness and flawless logistics to create bespoke Indian weddings — be it a close gathering or a grand affair. From mehendi rituals to modern experiences, we handle every detail so you can cherish what truly matters — love, family and forever together.</p>
         <div class="about-buttons">
@@ -114,5 +114,6 @@
     </div>
   </div>
 
+  <script src="auth.js"></script>
 </body>
 </html>

@@ -71,7 +71,7 @@ h1, h2, h3 {
 
 .nav-links {
   display: flex;
-  gap: 40px;
+  gap: 28px;
   margin-left: 40px;
   font-size: 15px;
 }
@@ -83,6 +83,25 @@ h1, h2, h3 {
 .nav-links .active {
   color: #c45b73;
   font-weight: 500;
+}
+
+/* Text brand in the navbar (replaces the old logo image) */
+.nav .brand {
+  font-family: Georgia, serif;
+  font-size: 24px;
+  color: #c45b73;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Logged-in user area in the navbar */
+.user-area {
+  font-size: 15px;
+  color: #2b1d1a;
+  white-space: nowrap;
+}
+.user-area a {
+  color: #c45b73;
 }
 
 .nav-cta {

@@ -92,7 +92,12 @@ refresh the page. There is no server and no database. The keys used are:
 | `weddingsBookings` | Booking form submissions (JSON array) | booking.html |
 | `contactMessages` | Contact form messages (JSON array) | contact.html |
 | `weddingPackage` | Package saved in the service builder (JSON object) | custom-service-builder.html, shown on booking.html |
-| `weddingUser` | Name and email after login/signup — **never the password** | login.html, signup.html |
+| `weddingUser` | Name and email of the logged-in user — **never the password** | login.html, signup.html, auth.js |
+| `weddingUsers` | List of all signed-up accounts (name + email) that login checks | signup.html, login.js |
+
+After a successful login the user is taken to home.html, and the navbar
+shows "Hi, &lt;name&gt;" with a Logout option instead of Login. Logout clears
+`weddingUser` only, so the account stays saved and can log in again.
 
 To clear the saved data, open the browser developer tools, go to
 Application → Local Storage, and delete the keys — or clear the site data.
@@ -102,12 +107,12 @@ Application → Local Storage, and delete the keys — or clear the site data.
 - **No real backend:** bookings, contact messages and accounts are saved
   only in the visitor's own browser (localStorage). They are not sent to
   the team and are not shared between devices or browsers.
-- **No real authentication:** login/signup only check the fields and save
-  the name/email. Passwords are never stored. Anyone can see the saved
-  data in their own browser, so do not use real passwords here.
-- **Images are missing:** the original Figma image links have expired, so
-  the `assets/` folder is empty. See `assets/README.md` for the list of
-  files and how to add them back. The portfolio photos come from Unsplash
+- **No real authentication:** login/signup only check the fields against the
+  accounts saved in this browser and save the name/email. Passwords are
+  never stored. Anyone can see the saved data in their own browser, so do
+  not use real passwords here. An email with no account cannot log in.
+- **Images:** the photos, icons and fonts in `assets/` are included in
+  this repo (added 22 Nov 2026). The portfolio photos come from Unsplash
   and still load when online. The login/signup pages also expect a
   `wedding.jpg` photo in the project root folder.
 - **Prices are starting prices:** the final price depends on venue, guest
